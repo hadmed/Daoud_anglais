@@ -1,88 +1,45 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Quiz Math</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #6dd5ed, #2193b0);
-      margin: 0;
-      padding: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-    }
-
-    .container {
-      background: white;
-      padding: 30px;
-      border-radius: 20px;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-      width: 90%;
-      max-width: 500px;
-      text-align: center;
-    }
-
-    h1 {
-      font-size: 24px;
-      margin-bottom: 20px;
-      color: #333;
-    }
-
-    .btn {
-      display: block;
-      width: 100%;
-      margin: 10px 0;
-      padding: 12px;
-      border: none;
-      border-radius: 15px;
-      background-color: #2193b0;
-      color: white;
-      font-size: 16px;
-      cursor: pointer;
-      transition: transform 0.2s, background 0.3s;
-    }
-
-    .btn:hover {
-      background-color: #17687c;
-      transform: scale(1.05);
-    }
-
-    #start-btn {
-      background: #6dd5ed;
-      font-size: 18px;
-      font-weight: bold;
-    }
-
-    #question-container {
-      display: none;
-    }
-
-    #feedback {
-      margin-top: 15px;
-      font-weight: bold;
-      font-size: 16px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Révisions Anglais</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
-    <h1>Quiz de Maths 🎓</h1>
-    <button id="start-btn" class="btn">Démarrer</button>
-    
-    <div id="question-container">
-      <p id="question">Question ici...</p>
-      <button class="btn answer-btn">Choix 1</button>
-      <button class="btn answer-btn">Choix 2</button>
-      <button class="btn answer-btn">Choix 3</button>
-      <button class="btn answer-btn">Choix 4</button>
-      <p id="feedback"></p>
-    </div>
-  </div>
+    <div class="container">
+        <h1>Révisions d'anglais</h1>
 
-  <script src="script.js"></script>
+        <div>
+            <label for="listSelect">Choisir une liste :</label>
+            <select id="listSelect"></select>
+        </div>
+
+        <div>
+            <label for="modeSelect">Choisir le mode :</label>
+            <select id="modeSelect">
+                <option value="qcm">QCM (4 choix)</option>
+                <option value="ecriture">Écriture</option>
+            </select>
+        </div>
+
+        <button id="startBtn">Démarrer</button>
+
+        <div id="quizContainer" class="hidden">
+            <p id="question"></p>
+            <div id="options"></div>
+            <input type="text" id="answerInput" class="hidden" placeholder="Écris ta réponse ici">
+            <button id="validateBtn">Valider</button>
+        </div>
+
+        <div id="scoreContainer" class="hidden">
+            <h2>Résultat</h2>
+            <p id="score"></p>
+            <h3>6 derniers scores :</h3>
+            <ul id="lastScores"></ul>
+            <button id="restartBtn">Recommencer</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
