@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🎓 Daoud Quiz d'Anglais</title>
+    <title>🎓 Mon Quiz d'Anglais</title>
     <style>
         * {
             margin: 0;
@@ -556,7 +556,7 @@
 </head>
 <body>
     <div class="container">
-        <h1><span class="emoji">🎓</span>Daoud Quiz d'Anglais<span class="emoji"></span></h1>
+        <h1><span class="emoji">🎓</span>Mon Quiz d'Anglais<span class="emoji">🇬🇧</span></h1>
 
         <div id="setupContainer">
             <div class="form-group">
@@ -651,39 +651,131 @@
         // Listes de vocabulaire
         // =========================
         const defaultListes = {
-            "Liste 1": [
-                { fr: "Courir", en: "To run" },
-                { fr: "Marcher, se promener", en: "To walk" },
-                { fr: "Faire", en: "To do" },
-                { fr: "Faire (fabriquer)", en: "To make" },
-                { fr: "Revenir à la maison, rentrer chez soi", en: "To come back home" },
-                { fr: "S'asseoir", en: "To sit down" },
-                { fr: "Se lever (de sa chaise)", en: "To stand up" },
-                { fr: "Parler, bavarder", en: "To talk" },
-                { fr: "Parler une langue étrangère", en: "To speak" },
-                { fr: "Dormir", en: "To sleep" },
-                { fr: "Être", en: "To be" },
-                { fr: "Avoir", en: "To have" },
-                { fr: "Avoir, posséder", en: "To have got" },
-                { fr: "Aller", en: "To go to" },
-                { fr: "Nager", en: "To swim" },
-                { fr: "Rouler à vélo", en: "To ride a bike" },
-                { fr: "Monter à cheval, faire de l'équitation", en: "To ride a horse" },
-                { fr: "Habiter", en: "To live" },
-                { fr: "À quelle fréquence vas-tu à l'école?", en: "How often do you go to school" },
-                { fr: "Je vais au cinéma 1 fois par an", en: "I go to the cinema once a year" },
-                { fr: "Je vais à la piscine 2 fois par semaine", en: "I go to the pool twice a week" },
-                { fr: "Je vais au restaurant 3 fois par mois", en: "I go to the restaurant 3 times a month" },
-                { fr: "Tous les jours", en: "Every day" }
-            ]
-        };
 
+    "Liste 1": [
+	{ en: "To wake up", fr: "Se réveiller" },
+	{ en: "To get up", fr: "Se lever (de son lit)" },
+	{ en: "To go to the bathroom", fr: "Aller dans la salle de bain" },
+	{ en: "To brush one's teeth / I brush my teeth", fr: "Brosser ses dents / je brosse mes dents" },
+	{ en: "To have a shower", fr: "Prendre une douche" },
+	{ en: "To have a bath", fr: "Prendre un bain" },
+	{ en: "To get dressed", fr: "S'habiller" },
+	{ en: "To have breakfast", fr: "Prendre son petit déjeuner" },
+	{ en: "To have lunch", fr: "Dîner" },
+	{ en: "To have dinner", fr: "Souper" },
+	{ en: "A snack", fr: "Un encas" },
+	{ en: "A meal", fr: "Un repas" },
+	{ en: "To leave home", fr: "Quitter la maison" },
+	{ en: "To go to school", fr: "Aller à l'école" },
+	{ en: "To wait for the bus", fr: "Attendre le bus" },
+	{ en: "To take the bus", fr: "Prendre le bus" },
+	{ en: "To arrive at school", fr: "Arriver à l'école" },
+	{ en: "To leave school", fr: "Quitter l'école" },
+	{ en: "By car", fr: "En voiture" },
+	{ en: "By bus", fr: "En bus" },
+	{ en: "By boat", fr: "En bateau" },
+    ],
 
+    "Liste 2": [
+	{ en: "By coach", fr: "En car" },
+	{ en: "By tube / underground / subway", fr: "En métro" },
+	{ en: "By plane", fr: "En avion" },
+	{ en: "ON FOOT", fr: "À pied" },
+	{ en: "To study", fr: "Étudier" },
+	{ en: "To have a break", fr: "Prendre une pause" },
+	{ en: "In the morning", fr: "Le matin" },
+	{ en: "In the afternoon", fr: "L'après-midi" },
+	{ en: "In the evening", fr: "Le soir" },
+	{ en: "At night", fr: "La nuit" },
+	{ en: "To go home", fr: "Aller à la maison" },
+	{ en: "To meet friends", fr: "Rencontrer des amis" },
+	{ en: "To go on the internet", fr: "Aller sur internet" },
+	{ en: "To drink", fr: "Boire" },
+	{ en: "To eat", fr: "Manger" },
+	{ en: "To like", fr: "Aimer" },
+	{ en: "To love", fr: "Aimer, adorer" },
+	{ en: "To hate", fr: "Dénester" },
+	{ en: "To read a book", fr: "Lire un livre" },
+	{ en: "To play PS3", fr: "Jouer à la PS3" },
+	{ en: "To listen to music", fr: "Écouter de la musique" },
+	{ en: "To go to the cinema", fr: "Aller au cinema" },
+	{ en: "To write", fr: "Écrire" },
+    ],
 
+    "Liste 3": [
+	{ en: "To work", fr: "Travailler" },
+	{ en: "To watch tv", fr: "Regarder la tv" },
+	{ en: "To look at", fr: "Regarder" },
+	{ en: "To hear", fr: "Entendre" },
+	{ en: "To sing", fr: "Chanter" },
+	{ en: "To give", fr: "Donner" },
+	{ en: "To open", fr: "Ouvrir" },
+	{ en: "To close", fr: "Fermer" },
+	{ en: "To smile", fr: "Sourire" },
+	{ en: "To laugh", fr: "Rire" },
+	{ en: "To show", fr: "Montrer" },
+	{ en: "To stay at home", fr: "Rester à la maison" },
+	{ en: "To scream", fr: "Crier" },
+	{ en: "To phone/ to call a friend", fr: "Téléphoner à un ami, appeler un ami" },
+	{ en: "To play football", fr: "Jouer au football" },
+	{ en: "To play tennis", fr: "Jouer au tennis" },
+	{ en: "To play the piano", fr: "Jouer du piano" },
+	{ en: "To play the drums", fr: "Jouer de la batterie" },
+	{ en: "To play the guitar", fr: "Jouer de la guitare" },
+	{ en: "To play cards", fr: "Jouer aux cartes" },
+	{ en: "To smoke", fr: "Fumer" },
+	{ en: "To cry", fr: "Pleurer" },
+	{ en: "To draw", fr: "Dessiner" },
+    ],
 
+    "Liste 4": [
+        { fr: "Courir", en: "To run" },
+        { fr: "Marcher, se promener", en: "To walk" },
+        { fr: "Faire", en: "To do" },
+        { fr: "Faire (fabriquer)", en: "To make" },
+        { fr: "Revenir à la maison, rentrer chez soi", en: "To come back home" },
+        { fr: "S'asseoir", en: "To sit down" },
+        { fr: "Se lever (de sa chaise)", en: "To stand up" },
+        { fr: "Parler, bavarder", en: "To talk" },
+        { fr: "Parler une langue étrangère", en: "To speak" },
+        { fr: "Dormir", en: "To sleep" },
+        { fr: "Être", en: "To be" },
+        { fr: "Avoir", en: "To have" },
+        { fr: "Avoir, posséder", en: "To have got" },
+        { fr: "Aller", en: "To go to" },
+        { fr: "Nager", en: "To swim" },
+        { fr: "Rouler à vélo", en: "To ride a bike" },
+        { fr: "Monter à cheval, faire de l'équitation", en: "To ride a horse" },
+        { fr: "Habiter", en: "To live" },
+        { fr: "À quelle fréquence vas-tu à l'école?", en: "How often do you go to school" },
+        { fr: "Je vais au cinéma 1 fois par an", en: "I go to the cinema once a year" },
+        { fr: "Je vais à la piscine 2 fois par semaine", en: "I go to the pool twice a week" },
+        { fr: "Je vais au restaurant 3 fois par mois", en: "I go to the restaurant 3 times a month" },
+        { fr: "Tous les jours", en: "Every day" }
+    ],
 
-
-
+    "Liste 5": [
+	{ en: "Usually", fr: "Habituellement" },
+	{ en: "Often", fr: "Souvent" },
+	{ en: "Rarely", fr: "Rarement" },
+	{ en: "Never", fr: "Jamais" },
+	{ en: "Hardly ever", fr: "Presque jamais" },
+	{ en: "Sometimes", fr: "Parfois" },
+	{ en: "Always", fr: "Toujours" },
+	{ en: "Once a week", fr: "Une fois par semaine" },
+	{ en: "Twice a week / a year", fr: "Deux fois par semaine / par an" },
+	{ en: "Three times a week / a day", fr: "Trois fois par semaine / par jour" },
+	{ en: "Four times a week / a month", fr: "Quatre fois par semaine / par mois" },
+	{ en: "I like reading", fr: "J'aime lire" },
+	{ en: "I like swimming", fr: "J'aime nager" },
+	{ en: "I like riding a bike", fr: "J'aime rouler en vélo / moto" },
+	{ en: "I like dancing", fr: "J'aime danser" },
+	{ en: "I like eating candies", fr: "J'aime manger des sucreries" },
+	{ en: "I like playing football", fr: "J'aime jouer au football" },
+	{ en: "I like playing tennis", fr: "J'aime jouer au tennis" },
+	{ en: "I like reading in the evening", fr: "J'aime lire le soir" },
+    ]
+};
 
 
         // Charger les listes depuis la mémoire ou utiliser les listes par défaut
