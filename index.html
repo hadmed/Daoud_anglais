@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+</body>
+</html><!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -322,7 +323,222 @@
             }
         }
 
-        @media (max-width: 768px) {
+        .manage-btn {
+            width: 100%;
+            padding: 12px;
+            font-size: 1rem;
+            background: linear-gradient(45deg, #a8edea, #fed6e3);
+            color: #2d3748;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        .manage-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+            border-color: #667eea;
+        }
+
+        #listManagerContainer {
+            animation: slideIn 0.5s ease-out;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 12px;
+            font-size: 1rem;
+            background: #e2e8f0;
+            color: #4a5568;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .tab-btn.active {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .tab-btn:hover:not(.active) {
+            background: #cbd5e0;
+        }
+
+        .tab-panel {
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .word-pair {
+            display: grid;
+            grid-template-columns: 1fr 1fr auto;
+            gap: 10px;
+            margin-bottom: 10px;
+            align-items: center;
+        }
+
+        .fr-input, .en-input {
+            padding: 12px;
+            font-size: 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .fr-input:focus, .en-input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 10px rgba(102, 126, 234, 0.3);
+        }
+
+        .remove-word-btn {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(45deg, #ff6b6b, #ffa726);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .remove-word-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+        }
+
+        .add-word-btn {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(45deg, #84fab0, #8fd3f4);
+            color: #2d3748;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .add-word-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .button-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .button-group.three-cols {
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+
+        .save-btn {
+            padding: 15px;
+            background: linear-gradient(45deg, #4facfe, #00f2fe);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .save-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(79, 172, 254, 0.4);
+        }
+
+        .delete-btn {
+            padding: 15px;
+            background: linear-gradient(45deg, #ff6b6b, #ffa726);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .delete-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 107, 107, 0.4);
+        }
+
+        .cancel-btn {
+            padding: 15px;
+            background: linear-gradient(45deg, #a8edea, #fed6e3);
+            color: #2d3748;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .cancel-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+            border-color: #667eea;
+        }
+
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 20px;
+            border-radius: 10px;
+            font-weight: bold;
+            z-index: 1000;
+            animation: slideInRight 0.3s ease-out;
+        }
+
+        .notification.success {
+            background: linear-gradient(45deg, #84fab0, #8fd3f4);
+            color: #2d3748;
+        }
+
+        .notification.error {
+            background: linear-gradient(45deg, #ff6b6b, #ffa726);
+            color: white;
+        }
+
+        @keyframes slideInRight {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
             .container {
                 margin: 10px;
                 padding: 20px;
@@ -346,6 +562,7 @@
             <div class="form-group">
                 <label for="listSelect">📚 Choisir une liste :</label>
                 <select id="listSelect"></select>
+                <button id="manageListsBtn" class="manage-btn">📝 Gérer mes listes</button>
             </div>
 
             <div class="form-group">
@@ -357,6 +574,56 @@
             </div>
 
             <button id="startBtn" class="start-btn">🚀 Commencer l'aventure !</button>
+        </div>
+
+        <div id="listManagerContainer" class="hidden">
+            <h2>📝 Gestionnaire de listes</h2>
+            
+            <div class="tabs">
+                <button id="addListTab" class="tab-btn active">➕ Ajouter une liste</button>
+                <button id="editListTab" class="tab-btn">✏️ Modifier/Supprimer</button>
+            </div>
+
+            <div id="addListPanel" class="tab-panel">
+                <div class="form-group">
+                    <label for="newListName">🏷️ Nom de la nouvelle liste :</label>
+                    <input type="text" id="newListName" placeholder="Ex: Liste 2, Verbes irréguliers...">
+                </div>
+
+                <div class="form-group">
+                    <label>📝 Mots de vocabulaire :</label>
+                    <div id="wordInputs">
+                        <div class="word-pair">
+                            <input type="text" placeholder="Mot en français" class="fr-input">
+                            <input type="text" placeholder="Traduction en anglais" class="en-input">
+                            <button type="button" class="remove-word-btn">❌</button>
+                        </div>
+                    </div>
+                    <button id="addWordBtn" class="add-word-btn">➕ Ajouter un mot</button>
+                </div>
+
+                <div class="button-group">
+                    <button id="saveListBtn" class="save-btn">💾 Sauvegarder la liste</button>
+                    <button id="cancelAddBtn" class="cancel-btn">❌ Annuler</button>
+                </div>
+            </div>
+
+            <div id="editListPanel" class="tab-panel hidden">
+                <div class="form-group">
+                    <label for="editListSelect">📚 Choisir une liste à modifier :</label>
+                    <select id="editListSelect"></select>
+                </div>
+
+                <div id="editWordInputs" class="form-group">
+                    <!-- Les mots seront chargés ici -->
+                </div>
+
+                <div class="button-group">
+                    <button id="updateListBtn" class="save-btn">✅ Mettre à jour</button>
+                    <button id="deleteListBtn" class="delete-btn">🗑️ Supprimer la liste</button>
+                    <button id="cancelEditBtn" class="cancel-btn">❌ Annuler</button>
+                </div>
+            </div>
         </div>
 
         <div id="quizContainer" class="hidden">
@@ -383,7 +650,7 @@
         // =========================
         // Listes de vocabulaire
         // =========================
-        const listes = {
+        const defaultListes = {
             "Liste 1": [
                 { fr: "Courir", en: "To run" },
                 { fr: "Marcher, se promener", en: "To walk" },
@@ -409,8 +676,24 @@
                 { fr: "Je vais au restaurant 3 fois par mois", en: "I go to the restaurant 3 times a month" },
                 { fr: "Tous les jours", en: "Every day" }
             ]
-
         };
+
+
+
+
+
+
+
+
+
+        // Charger les listes depuis la mémoire ou utiliser les listes par défaut
+        let listes = {};
+        try {
+            const savedListes = sessionStorage.getItem("englishLists");
+            listes = savedListes ? JSON.parse(savedListes) : {...defaultListes};
+        } catch (e) {
+            listes = {...defaultListes};
+        }
 
         // =========================
         // Variables globales
@@ -434,7 +717,9 @@
         const listSelect = document.getElementById("listSelect");
         const modeSelect = document.getElementById("modeSelect");
         const startBtn = document.getElementById("startBtn");
+        const manageListsBtn = document.getElementById("manageListsBtn");
         const setupContainer = document.getElementById("setupContainer");
+        const listManagerContainer = document.getElementById("listManagerContainer");
         const quizContainer = document.getElementById("quizContainer");
         const questionEl = document.getElementById("question");
         const questionNumberEl = document.getElementById("questionNumber");
@@ -447,18 +732,271 @@
         const restartBtn = document.getElementById("restartBtn");
         const progressBar = document.getElementById("progressBar");
 
+        // Éléments du gestionnaire de listes
+        const addListTab = document.getElementById("addListTab");
+        const editListTab = document.getElementById("editListTab");
+        const addListPanel = document.getElementById("addListPanel");
+        const editListPanel = document.getElementById("editListPanel");
+        const newListName = document.getElementById("newListName");
+        const wordInputs = document.getElementById("wordInputs");
+        const addWordBtn = document.getElementById("addWordBtn");
+        const saveListBtn = document.getElementById("saveListBtn");
+        const cancelAddBtn = document.getElementById("cancelAddBtn");
+        const editListSelect = document.getElementById("editListSelect");
+        const editWordInputs = document.getElementById("editWordInputs");
+        const updateListBtn = document.getElementById("updateListBtn");
+        const deleteListBtn = document.getElementById("deleteListBtn");
+        const cancelEditBtn = document.getElementById("cancelEditBtn");
+
         // =========================
         // Initialisation des listes
         // =========================
         function initLists() {
+            listSelect.innerHTML = "";
+            editListSelect.innerHTML = "";
+            
             for (let listName in listes) {
+                // Sélecteur principal
                 let opt = document.createElement("option");
                 opt.value = listName;
                 opt.textContent = listName;
                 listSelect.appendChild(opt);
+
+                // Sélecteur d'édition
+                let editOpt = document.createElement("option");
+                editOpt.value = listName;
+                editOpt.textContent = listName;
+                editListSelect.appendChild(editOpt);
             }
         }
         initLists();
+
+        // =========================
+        // Sauvegarde des listes
+        // =========================
+        function saveLists() {
+            try {
+                sessionStorage.setItem("englishLists", JSON.stringify(listes));
+            } catch (e) {
+                showNotification("Erreur lors de la sauvegarde", "error");
+            }
+        }
+
+        // =========================
+        // Notification
+        // =========================
+        function showNotification(message, type = "success") {
+            const notification = document.createElement("div");
+            notification.className = `notification ${type}`;
+            notification.textContent = message;
+            document.body.appendChild(notification);
+
+            setTimeout(() => {
+                notification.remove();
+            }, 3000);
+        }
+
+        // =========================
+        // Gestionnaire de listes
+        // =========================
+        manageListsBtn.addEventListener("click", () => {
+            setupContainer.classList.add("hidden");
+            listManagerContainer.classList.remove("hidden");
+        });
+
+        // Gestion des onglets
+        addListTab.addEventListener("click", () => {
+            addListTab.classList.add("active");
+            editListTab.classList.remove("active");
+            addListPanel.classList.remove("hidden");
+            editListPanel.classList.add("hidden");
+        });
+
+        editListTab.addEventListener("click", () => {
+            editListTab.classList.add("active");
+            addListTab.classList.remove("active");
+            editListPanel.classList.remove("hidden");
+            addListPanel.classList.add("hidden");
+        });
+
+        // =========================
+        // Ajouter une nouvelle liste
+        // =========================
+        addWordBtn.addEventListener("click", () => {
+            addWordPair();
+        });
+
+        function addWordPair(frWord = "", enWord = "") {
+            const wordPair = document.createElement("div");
+            wordPair.className = "word-pair";
+            wordPair.innerHTML = `
+                <input type="text" placeholder="Mot en français" class="fr-input" value="${frWord}">
+                <input type="text" placeholder="Traduction en anglais" class="en-input" value="${enWord}">
+                <button type="button" class="remove-word-btn">❌</button>
+            `;
+            
+            wordPair.querySelector(".remove-word-btn").addEventListener("click", () => {
+                if (wordInputs.children.length > 1) {
+                    wordPair.remove();
+                }
+            });
+
+            wordInputs.appendChild(wordPair);
+        }
+
+        // Ajouter des lignes par défaut
+        for (let i = 0; i < 4; i++) {
+            addWordPair();
+        }
+
+        saveListBtn.addEventListener("click", () => {
+            const listName = newListName.value.trim();
+            if (!listName) {
+                showNotification("Veuillez entrer un nom de liste", "error");
+                return;
+            }
+
+            if (listes[listName]) {
+                showNotification("Une liste avec ce nom existe déjà", "error");
+                return;
+            }
+
+            const words = [];
+            const wordPairs = wordInputs.querySelectorAll(".word-pair");
+            
+            wordPairs.forEach(pair => {
+                const frInput = pair.querySelector(".fr-input").value.trim();
+                const enInput = pair.querySelector(".en-input").value.trim();
+                if (frInput && enInput) {
+                    words.push({ fr: frInput, en: enInput });
+                }
+            });
+
+            if (words.length === 0) {
+                showNotification("Veuillez ajouter au moins un mot", "error");
+                return;
+            }
+
+            listes[listName] = words;
+            saveLists();
+            initLists();
+            
+            // Réinitialiser le formulaire
+            newListName.value = "";
+            wordInputs.innerHTML = "";
+            for (let i = 0; i < 4; i++) {
+                addWordPair();
+            }
+            
+            showNotification(`Liste "${listName}" créée avec succès !`, "success");
+        });
+
+        // =========================
+        // Modifier/Supprimer une liste
+        // =========================
+        editListSelect.addEventListener("change", () => {
+            loadListForEditing();
+        });
+
+        function loadListForEditing() {
+            const selectedListName = editListSelect.value;
+            const selectedList = listes[selectedListName];
+            
+            if (!selectedList) return;
+
+            editWordInputs.innerHTML = '<label>📝 Mots de vocabulaire :</label>';
+            
+            const container = document.createElement("div");
+            container.id = "editWordContainer";
+            
+            selectedList.forEach((word, index) => {
+                const wordPair = document.createElement("div");
+                wordPair.className = "word-pair";
+                wordPair.innerHTML = `
+                    <input type="text" placeholder="Mot en français" class="fr-input" value="${word.fr}">
+                    <input type="text" placeholder="Traduction en anglais" class="en-input" value="${word.en}">
+                    <button type="button" class="remove-word-btn">❌</button>
+                `;
+                
+                wordPair.querySelector(".remove-word-btn").addEventListener("click", () => {
+                    wordPair.remove();
+                });
+
+                container.appendChild(wordPair);
+            });
+            
+            const addWordBtnEdit = document.createElement("button");
+            addWordBtnEdit.className = "add-word-btn";
+            addWordBtnEdit.textContent = "➕ Ajouter un mot";
+            addWordBtnEdit.addEventListener("click", () => {
+                const wordPair = document.createElement("div");
+                wordPair.className = "word-pair";
+                wordPair.innerHTML = `
+                    <input type="text" placeholder="Mot en français" class="fr-input">
+                    <input type="text" placeholder="Traduction en anglais" class="en-input">
+                    <button type="button" class="remove-word-btn">❌</button>
+                `;
+                
+                wordPair.querySelector(".remove-word-btn").addEventListener("click", () => {
+                    wordPair.remove();
+                });
+
+                container.insertBefore(wordPair, addWordBtnEdit);
+            });
+            
+            container.appendChild(addWordBtnEdit);
+            editWordInputs.appendChild(container);
+        }
+
+        updateListBtn.addEventListener("click", () => {
+            const listName = editListSelect.value;
+            if (!listName) return;
+
+            const words = [];
+            const wordPairs = editWordInputs.querySelectorAll(".word-pair");
+            
+            wordPairs.forEach(pair => {
+                const frInput = pair.querySelector(".fr-input").value.trim();
+                const enInput = pair.querySelector(".en-input").value.trim();
+                if (frInput && enInput) {
+                    words.push({ fr: frInput, en: enInput });
+                }
+            });
+
+            if (words.length === 0) {
+                showNotification("Veuillez garder au moins un mot", "error");
+                return;
+            }
+
+            listes[listName] = words;
+            saveLists();
+            initLists();
+            showNotification(`Liste "${listName}" mise à jour !`, "success");
+        });
+
+        deleteListBtn.addEventListener("click", () => {
+            const listName = editListSelect.value;
+            if (!listName) return;
+
+            if (confirm(`Êtes-vous sûr de vouloir supprimer la liste "${listName}" ?`)) {
+                delete listes[listName];
+                saveLists();
+                initLists();
+                editWordInputs.innerHTML = "";
+                showNotification(`Liste "${listName}" supprimée`, "success");
+            }
+        });
+
+        // Boutons d'annulation
+        cancelAddBtn.addEventListener("click", () => {
+            setupContainer.classList.remove("hidden");
+            listManagerContainer.classList.add("hidden");
+        });
+
+        cancelEditBtn.addEventListener("click", () => {
+            setupContainer.classList.remove("hidden");
+            listManagerContainer.classList.add("hidden");
+        });
 
         // =========================
         // Démarrage du quiz
