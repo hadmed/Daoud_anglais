@@ -1,45 +1,96 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Révisions Anglais</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz rapide</title>
+  <style>
+    body {
+      font-family: "Comic Sans MS", Arial, sans-serif;
+      text-align: center;
+      background: linear-gradient(to bottom right, #74ebd5, #9face6);
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 1.8em;
+      color: #fff;
+      margin-bottom: 20px;
+      text-shadow: 1px 1px 2px #00000050;
+    }
+
+    .quiz-box {
+      background: white;
+      border-radius: 15px;
+      padding: 20px;
+      max-width: 400px;
+      margin: auto;
+      box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
+    }
+
+    button {
+      display: block;
+      width: 100%;
+      margin: 10px 0;
+      padding: 12px;
+      font-size: 1.1em;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+    }
+
+    .option {
+      background: #f1f1f1;
+    }
+
+    .option.correct {
+      background: #4caf50;
+      color: white;
+    }
+
+    .option.wrong {
+      background: #f44336;
+      color: white;
+    }
+
+    #result {
+      font-size: 1.2em;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Révisions d'anglais</h1>
+  <h1>🎯 Quiz Rapide</h1>
+  <div class="quiz-box">
+    <p><strong>Combien font 7 × 8 ?</strong></p>
+    <button class="option" onclick="checkAnswer(this, false)">54</button>
+    <button class="option" onclick="checkAnswer(this, true)">56</button>
+    <button class="option" onclick="checkAnswer(this, false)">58</button>
+    <button class="option" onclick="checkAnswer(this, false)">64</button>
 
-        <div>
-            <label for="listSelect">Choisir une liste :</label>
-            <select id="listSelect"></select>
-        </div>
+    <p id="result"></p>
+  </div>
 
-        <div>
-            <label for="modeSelect">Choisir le mode :</label>
-            <select id="modeSelect">
-                <option value="qcm">QCM (4 choix)</option>
-                <option value="ecriture">Écriture</option>
-            </select>
-        </div>
+  <script>
+    function checkAnswer(button, isCorrect) {
+      const buttons = document.querySelectorAll(".option");
+      buttons.forEach(b => b.disabled = true); // bloque après choix
 
-        <button id="startBtn">Démarrer</button>
-
-        <div id="quizContainer" class="hidden">
-            <p id="question"></p>
-            <div id="options"></div>
-            <input type="text" id="answerInput" class="hidden" placeholder="Écris ta réponse ici">
-            <button id="validateBtn">Valider</button>
-        </div>
-
-        <div id="scoreContainer" class="hidden">
-            <h2>Résultat</h2>
-            <p id="score"></p>
-            <h3>6 derniers scores :</h3>
-            <ul id="lastScores"></ul>
-            <button id="restartBtn">Recommencer</button>
-        </div>
-    </div>
-    <script src="script.js"></script>
+      if (isCorrect) {
+        button.classList.add("correct");
+        document.getElementById("result").textContent = "✅ Bravo !";
+      } else {
+        button.classList.add("wrong");
+        document.getElementById("result").textContent = "❌ Mauvaise réponse...";
+      }
+    }
+  </script>
 </body>
 </html>
