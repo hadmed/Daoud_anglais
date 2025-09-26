@@ -1,159 +1,171 @@
-let lists = {
-  "Liste 1": [
-    { en: "To run", fr: "Courir" },
-    { en: "To walk", fr: "Marcher, se promener" },
-    { en: "To do", fr: "Faire" },
-    { en: "To make", fr: "Faire (fabriquer)" },
-    { en: "To come back home", fr: "Revenir à la maison, rentrer chez soi" },
-    { en: "To sit down", fr: "S’asseoir" },
-    { en: "To stand up", fr: "Se lever (de sa chaise)" },
-    { en: "To talk", fr: "Parler, bavarder" },
-    { en: "To speak", fr: "Parler une langue étrangère" },
-    { en: "To sleep", fr: "Dormir" },
-    { en: "To be", fr: "Être" },
-    { en: "To have", fr: "Avoir" },
-    { en: "To have got", fr: "Avoir, posséder" },
-    { en: "To go to", fr: "Aller" },
-    { en: "To swim", fr: "Nager" },
-    { en: "To ride a bike", fr: "Rouler à vélo" },
-    { en: "To ride a horse", fr: "Monter à cheval, faire de l’équitation" },
-    { en: "To live", fr: "Habiter" },
-    { en: "How often do you go to school", fr: "À quelle fréquence vas-tu à l’école ?" },
-    { en: "I go to the cinema once a year", fr: "Je vais au cinéma 1 fois par an" },
-    { en: "I go to the pool twice a week", fr: "Je vais à la piscine 2 fois par semaine" },
-    { en: "I go to the restaurant 3 times a month", fr: "Je vais au restaurant 3 fois par mois" },
-    { en: "Every day", fr: "Tous les jours" }
-  ]
+// =========================
+// Listes de vocabulaire
+// =========================
+const listes = {
+    "Liste 1": [
+        { fr: "Courir", en: "To run" },
+        { fr: "Marcher, se promener", en: "To walk" },
+        { fr: "Faire", en: "To do" },
+        { fr: "Faire (fabriquer)", en: "To make" },
+        { fr: "Revenir à la maison, rentrer chez soi", en: "To come back home" },
+        { fr: "S’asseoir", en: "To sit down" },
+        { fr: "Se lever (de sa chaise)", en: "To stand up" },
+        { fr: "Parler, bavarder", en: "To talk" },
+        { fr: "Parler une langue étrangère", en: "To speak" },
+        { fr: "Dormir", en: "To sleep" },
+        { fr: "Être", en: "To be" },
+        { fr: "Avoir", en: "To have" },
+        { fr: "Avoir, posséder", en: "To have got" },
+        { fr: "Aller", en: "To go to" },
+        { fr: "Nager", en: "To swim" },
+        { fr: "Rouler à vélo", en: "To ride a bike" },
+        { fr: "Monter à cheval, faire de l’équitation", en: "To ride a horse" },
+        { fr: "Habiter", en: "To live" },
+        { fr: "À quelle fréquence vas-tu à l’école?", en: "How often do you go to school" },
+        { fr: "Je vais au cinéma 1 fois par an", en: "I go to the cinema once a year" },
+        { fr: "Je vais à la piscine 2 fois par semaine", en: "I go to the pool twice a week" },
+        { fr: "Je vais au restaurant 3 fois par mois", en: "I go to the restaurant 3 times a month" },
+        { fr: "Tous les jours", en: "Every day" }
+    ]
 };
 
-let currentListName = "Liste 1";
-let currentList = lists[currentListName];
-let score = 0, total = 0;
-let lastScores = JSON.parse(localStorage.getItem("scores")) || {};
+// =========================
+// Variables globales
+// =========================
+let currentList = [];
+let currentIndex = 0;
+let score = 0;
+let mode = "qcm"; // par défaut
+let lastScores = JSON.parse(localStorage.getItem("scores")) || [];
 
-// Remplir le menu déroulant
-function updateListSelect() {
-  const select = document.getElementById("listSelect");
-  select.innerHTML = "";
-  for (let name in lists) {
-    const opt = document.createElement("option");
-    opt.value = name;
-    opt.textContent = name;
-    select.appendChild(opt);
-  }
+// =========================
+// Récupérer les éléments
+// =========================
+const listSelect = document.getElementById("listSelect");
+const modeSelect = document.getElementById("modeSelect");
+const startBtn = document.getElementById("startBtn");
+const quizContainer = document.getElementById("quizContainer");
+const questionEl = document.getElementById("question");
+const optionsEl = document.getElementById("options");
+const answerInput = document.getElementById("answerInput");
+const validateBtn = document.getElementById("validateBtn");
+const scoreContainer = document.getElementById("scoreContainer");
+const scoreEl = document.getElementById("score");
+const lastScoresEl = document.getElementById("lastScores");
+const restartBtn = document.getElementById("restartBtn");
+
+// =========================
+// Initialisation des listes
+// =========================
+function initLists() {
+    for (let listName in listes) {
+        let opt = document.createElement("option");
+        opt.value = listName;
+        opt.textContent = listName;
+        listSelect.appendChild(opt);
+    }
 }
-updateListSelect();
+initLists();
 
-function saveScore(listName, score, total) {
-  if (!lastScores[listName]) lastScores[listName] = [];
-  lastScores[listName].unshift(`${score}/${total}`);
-  if (lastScores[listName].length > 6) lastScores[listName].pop();
-  localStorage.setItem("scores", JSON.stringify(lastScores));
-  showScores();
+// =========================
+// Démarrage du quiz
+// =========================
+startBtn.addEventListener("click", () => {
+    const selectedList = listSelect.value;
+    mode = modeSelect.value;
+    currentList = [...listes[selectedList]]; // copie
+    currentIndex = 0;
+    score = 0;
+
+    scoreContainer.classList.add("hidden");
+    quizContainer.classList.remove("hidden");
+
+    showQuestion();
+});
+
+// =========================
+// Affichage d'une question
+// =========================
+function showQuestion() {
+    if (currentIndex >= currentList.length) {
+        endQuiz();
+        return;
+    }
+
+    let item = currentList[currentIndex];
+    questionEl.textContent = item.fr;
+
+    optionsEl.innerHTML = "";
+    answerInput.classList.add("hidden");
+
+    if (mode === "qcm") {
+        // QCM
+        let answers = [item.en];
+        while (answers.length < 4) {
+            let randomItem = currentList[Math.floor(Math.random() * currentList.length)].en;
+            if (!answers.includes(randomItem)) {
+                answers.push(randomItem);
+            }
+        }
+        answers.sort(() => Math.random() - 0.5);
+
+        answers.forEach(ans => {
+            let btn = document.createElement("button");
+            btn.textContent = ans;
+            btn.onclick = () => {
+                if (ans === item.en) score++;
+                currentIndex++;
+                showQuestion();
+            };
+            optionsEl.appendChild(btn);
+        });
+
+    } else {
+        // Mode écriture
+        answerInput.value = "";
+        answerInput.classList.remove("hidden");
+
+        validateBtn.onclick = () => {
+            if (answerInput.value.trim().toLowerCase() === item.en.toLowerCase()) {
+                score++;
+            }
+            currentIndex++;
+            showQuestion();
+        };
+    }
 }
 
-function showScores() {
-  const ul = document.getElementById("lastScores");
-  ul.innerHTML = "";
-  if (lastScores[currentListName]) {
-    lastScores[currentListName].forEach(s => {
-      const li = document.createElement("li");
-      li.textContent = `${currentListName}: ${s}`;
-      ul.appendChild(li);
+// =========================
+// Fin du quiz
+// =========================
+function endQuiz() {
+    quizContainer.classList.add("hidden");
+    scoreContainer.classList.remove("hidden");
+
+    scoreEl.textContent = `Ton score : ${score}/${currentList.length}`;
+
+    lastScores.unshift(score);
+    if (lastScores.length > 6) lastScores.pop();
+    localStorage.setItem("scores", JSON.stringify(lastScores));
+
+    showLastScores();
+}
+
+// =========================
+// Affichage des derniers scores
+// =========================
+function showLastScores() {
+    lastScoresEl.innerHTML = "";
+    lastScores.forEach(s => {
+        let li = document.createElement("li");
+        li.textContent = s;
+        lastScoresEl.appendChild(li);
     });
-  }
 }
 
-function startQuiz() {
-  currentListName = document.getElementById("listSelect").value;
-  currentList = lists[currentListName];
-  score = 0; total = 0;
-  document.getElementById("quiz").style.display = "block";
-  document.getElementById("inputMode").style.display = "none";
-  nextQuestion();
-}
-
-function nextQuestion() {
-  if (total >= currentList.length) {
-    alert(`Fini ! Score: ${score}/${total}`);
-    saveScore(currentListName, score, total);
-    return;
-  }
-  total++;
-  const q = currentList[Math.floor(Math.random() * currentList.length)];
-  document.getElementById("question").textContent = q.fr;
-
-  const options = [q.en];
-  while (options.length < 4) {
-    const r = currentList[Math.floor(Math.random() * currentList.length)].en;
-    if (!options.includes(r)) options.push(r);
-  }
-  options.sort(() => Math.random() - 0.5);
-
-  const optionsDiv = document.getElementById("options");
-  optionsDiv.innerHTML = "";
-  options.forEach(opt => {
-    const div = document.createElement("div");
-    div.className = "option";
-    div.textContent = opt;
-    div.onclick = () => {
-      if (opt === q.en) score++;
-      nextQuestion();
-    };
-    optionsDiv.appendChild(div);
-  });
-}
-
-// Mode écriture
-let currentInputQ;
-function startInputMode() {
-  currentListName = document.getElementById("listSelect").value;
-  currentList = lists[currentListName];
-  score = 0; total = 0;
-  document.getElementById("quiz").style.display = "none";
-  document.getElementById("inputMode").style.display = "block";
-  nextInputQuestion();
-}
-
-function nextInputQuestion() {
-  if (total >= currentList.length) {
-    alert(`Fini ! Score: ${score}/${total}`);
-    saveScore(currentListName, score, total);
-    return;
-  }
-  total++;
-  currentInputQ = currentList[Math.floor(Math.random() * currentList.length)];
-  document.getElementById("inputQuestion").textContent = currentInputQ.fr;
-  document.getElementById("userAnswer").value = "";
-}
-
-function checkInputAnswer() {
-  const ans = document.getElementById("userAnswer").value.trim();
-  if (ans.toLowerCase() === currentInputQ.en.toLowerCase()) {
-    score++;
-    alert("Correct !");
-  } else {
-    alert(`Faux ! Réponse: ${currentInputQ.en}`);
-  }
-  nextInputQuestion();
-}
-
-// Ajouter une nouvelle liste
-function addNewList() {
-  const name = document.getElementById("listName").value.trim();
-  const text = document.getElementById("newList").value.trim();
-  if (!name || !text) { alert("Nom et contenu obligatoires"); return; }
-
-  const lines = text.split("\n");
-  const newEntries = lines.map(line => {
-    const parts = line.split("=");
-    return { en: parts[0].trim(), fr: parts[1].trim() };
-  });
-  lists[name] = newEntries;
-  updateListSelect();
-  document.getElementById("listName").value = "";
-  document.getElementById("newList").value = "";
-  alert(`Liste "${name}" ajoutée !`);
-}
-
-showScores();
+// =========================
+// Recommencer
+// =========================
+restartBtn.addEventListener("click", () => {
+    scoreContainer.classList.add("hidden");
+});
