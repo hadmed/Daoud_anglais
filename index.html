@@ -3,94 +3,86 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Quiz rapide</title>
+  <title>Quiz Math</title>
   <style>
     body {
-      font-family: "Comic Sans MS", Arial, sans-serif;
-      text-align: center;
-      background: linear-gradient(to bottom right, #74ebd5, #9face6);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #6dd5ed, #2193b0);
       margin: 0;
-      padding: 20px;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+      width: 90%;
+      max-width: 500px;
+      text-align: center;
     }
 
     h1 {
-      font-size: 1.8em;
-      color: #fff;
+      font-size: 24px;
       margin-bottom: 20px;
-      text-shadow: 1px 1px 2px #00000050;
+      color: #333;
     }
 
-    .quiz-box {
-      background: white;
-      border-radius: 15px;
-      padding: 20px;
-      max-width: 400px;
-      margin: auto;
-      box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
-    }
-
-    button {
+    .btn {
       display: block;
       width: 100%;
       margin: 10px 0;
       padding: 12px;
-      font-size: 1.1em;
       border: none;
-      border-radius: 10px;
+      border-radius: 15px;
+      background-color: #2193b0;
+      color: white;
+      font-size: 16px;
       cursor: pointer;
-      transition: 0.3s;
+      transition: transform 0.2s, background 0.3s;
     }
 
-    button:hover {
+    .btn:hover {
+      background-color: #17687c;
       transform: scale(1.05);
     }
 
-    .option {
-      background: #f1f1f1;
+    #start-btn {
+      background: #6dd5ed;
+      font-size: 18px;
+      font-weight: bold;
     }
 
-    .option.correct {
-      background: #4caf50;
-      color: white;
+    #question-container {
+      display: none;
     }
 
-    .option.wrong {
-      background: #f44336;
-      color: white;
-    }
-
-    #result {
-      font-size: 1.2em;
+    #feedback {
       margin-top: 15px;
       font-weight: bold;
+      font-size: 16px;
     }
   </style>
 </head>
 <body>
-  <h1>🎯 Quiz Rapide</h1>
-  <div class="quiz-box">
-    <p><strong>Combien font 7 × 8 ?</strong></p>
-    <button class="option" onclick="checkAnswer(this, false)">54</button>
-    <button class="option" onclick="checkAnswer(this, true)">56</button>
-    <button class="option" onclick="checkAnswer(this, false)">58</button>
-    <button class="option" onclick="checkAnswer(this, false)">64</button>
-
-    <p id="result"></p>
+  <div class="container">
+    <h1>Quiz de Maths 🎓</h1>
+    <button id="start-btn" class="btn">Démarrer</button>
+    
+    <div id="question-container">
+      <p id="question">Question ici...</p>
+      <button class="btn answer-btn">Choix 1</button>
+      <button class="btn answer-btn">Choix 2</button>
+      <button class="btn answer-btn">Choix 3</button>
+      <button class="btn answer-btn">Choix 4</button>
+      <p id="feedback"></p>
+    </div>
   </div>
 
-  <script>
-    function checkAnswer(button, isCorrect) {
-      const buttons = document.querySelectorAll(".option");
-      buttons.forEach(b => b.disabled = true); // bloque après choix
-
-      if (isCorrect) {
-        button.classList.add("correct");
-        document.getElementById("result").textContent = "✅ Bravo !";
-      } else {
-        button.classList.add("wrong");
-        document.getElementById("result").textContent = "❌ Mauvaise réponse...";
-      }
-    }
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
